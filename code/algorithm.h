@@ -5,5 +5,7 @@
 
 void swap(int*, int*);
 void BubbleSort(int *, int);
+void SelectSort(int *, int);
+void InsertSort(int *, int);
 void ShowList(int *, int);
 #endif
