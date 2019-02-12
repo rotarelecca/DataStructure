@@ -2,8 +2,9 @@
 
 int main()
 {
-	int a = 3, b = 4;
-	swap(&a, &b);
-	printf("a = %d, b = %d\n", a, b);
+	int num[5] = {5, 4, 3, 2, 1};
+	ShowList(num, 5);
+	BubbleSort(num, 5);
+	ShowList(num, 5);
 	return 0;
 }
