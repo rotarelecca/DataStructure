@@ -2,9 +2,9 @@
 
 int main()
 {
-	int num[5] = {5, 4, 3, 2, 1};
-	ShowList(num, 5);
-	InsertSort(num, 5);
-	ShowList(num, 5);
+	int num[10] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3};
+	ShowList(num, 10);
+	QuickSort(num, 0, 9);
+	ShowList(num, 10);
 	return 0;
 }
