@@ -133,3 +133,48 @@ void Merge(int *num1, int *num2, int s, int m, int t)
 		*(num2 + k++) = *(num1 + j++);
 	}
 }
+
+void MergePass(int *num1, int *num2, int n, int h)
+{
+	int i = 0, t = 0;
+	for (i = 0; i + 2 * h - 1 < n; i += 2 * h)
+	{
+		Merge(num1, num2, i, i + h - 1, i + 2 * h -1);
+	}
+	if (i + h - 1 < n)
+	{
+		Merge(num1, num2, i, i + h - 1, n - 1);
+	}
+	else
+	{
+		for (t = i; t < n; t++)
+		{
+			*(num2 + t) = *(num1 + t);
+		}
+	}
+}
+
+void MergeSort(int *num, int n)
+{
+	int h = 1;
+	int i = 0;
+	int *num2 = NULL;
+	num2 = (int *)malloc(n * sizeof(int));
+	if (num2 == NULL)
+	{
+		exit(1);
+	}
+	for (i = 0; i < n; i++)
+	{
+		*(num2 + i) = 0;
+	}
+	while (h < n)
+	{
+		MergePass(num, num2, n, h);
+		h *= 2;
+		MergePass(num2, num, n, h);
+		h *= 2;
+	}
+	free(num2);
+	num2 = NULL;
+}
