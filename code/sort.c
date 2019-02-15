@@ -178,3 +178,48 @@ void MergeSort(int *num, int n)
 	free(num2);
 	num2 = NULL;
 }
+
+void HeapSort(int *num, int n)
+{
+	int i = 0;
+	for (i = n / 2; i >= 0; i--)
+	{
+		PushDown(num, i, n);
+	}
+	for (i = n - 1; i > 0; i--)
+	{
+		swap(num, num + i);
+		PushDown(num, 0, i - 1);
+	}
+}
+
+void PushDown(int *num, int first, int last)
+{
+	int r = first;
+	last -= 1;
+	while (r < last / 2)
+	{
+		if ((r == last / 2) && (last % 2 == 0))
+		{
+			if (*(num + r) < *(num + 2 * r))
+			{
+				swap(num + r, num + 2 * r);
+			}
+			r = last;
+		}
+		else if ((*(num + r) < *(num + 2 * r)) && (*(num + 2 * r) >= *(num + 2 * r + 1)))
+		{
+			swap(num + r, num + 2 * r);
+			r *= 2;
+		}
+		else if ((*(num + r) < *(num + 2 * r + 1)) && (*(num + 2 * r + 1) > *(num + 2 * r)))
+		{
+			swap(num + r, num + 2 * r + 1);
+			r = 2 * r + 1;
+		}
+		else
+		{
+			r = last;
+		}
+	}
+}
