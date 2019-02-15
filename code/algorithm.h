@@ -9,6 +9,7 @@ void swap(int *, int *);
 void BubbleSort(int *, int);
 void SelectSort(int *, int);
 void InsertSort(int *, int);
+void ShellSort(int *, int);
 
 int FindPivot(int *, int, int);
 int Partition(int *, int, int, int);
@@ -20,6 +21,7 @@ void MergeSort(int *, int);
 
 void PushDown(int *, int, int);
 void HeapSort(int *, int);
+
 
 void ShowList(int *, int);
 #endif

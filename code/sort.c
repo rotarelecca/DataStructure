@@ -223,3 +223,25 @@ void PushDown(int *num, int first, int last)
 		}
 	}
 }
+
+void ShellSort(int *num, int n)
+{
+	int i = 0, j = 0, d = 0;
+	int k = 0;
+	while (d < n)
+	{
+		d = 2 * d + 1;
+	}
+	for (k = (d - 1) / 2; k > 0; k = (k - 1) / 2)
+	{
+		for (i = k; i < n; i++)
+		{
+			j = i - k;
+			while (j >= 0 && *(num + j) > *(num + j + k))
+			{
+				swap(num + j, num + j + k);
+				j -= k;
+			}
+		}
+	}
+}
