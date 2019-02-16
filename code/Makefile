@@ -1,14 +1,11 @@
-CC = gcc
+CFALGS = -I ./lib
 LIB_OBJS = test.o sort.o
 
-test: ${LIB_OBJS}
+test: test.o sort.o
 	${CC} -o $@ ${LIB_OBJS}
 
-sort.o: sort.c algorithm.h
-	${CC} -c sort.c algorithm.h
-
-test.o: test.c algorithm.h
-	${CC} -c test.c algorithm.h
+test.o: test.c
+	${CC} -c test.c ${CFALGS}
 
 clean:
-	-rm -f *.o *.gch test
+	-rm *.o test
